@@ -1,7 +1,7 @@
 .idea/
 .idea
 idea
-
+db.sqlite3
 
 # Created by https://www.gitignore.io/api/macos,linux,django,python,pycharm
 
@@ -213,5 +213,7 @@ ENV/
 
 # mkdocs documentation
 /site
+
+prod_settings.py
 
 

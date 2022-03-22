@@ -14,6 +14,8 @@ class CustomUser(AbstractUser):
         (TORG_PRED, 'Торговый представитель')
     ]
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    username = models.CharField(max_length=40, verbose_name="Логин", unique=True, null=False, blank=False,
+                                help_text='Логин (имя) для входа на сайт')
     IIN = models.CharField(verbose_name="БИН / ИИН", max_length=12, unique=False, null=True, blank=True,
                            help_text='БИН или ИИН указывают юр. лица и ИП. Физические лица не заполняют.')
     phone = models.CharField(max_length=16, unique=False, verbose_name='Номер телефона', blank=True,
@@ -28,6 +30,7 @@ class CustomUser(AbstractUser):
                               help_text='Юр.лицо - оформляется несколько документов при продаже (счет-фактура, накладная, кассовый чек). Физическое лицо - кассовый чек (как при обычной покупке в магазине)'
     )
 
+    USERNAME_FIELD = 'username'
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
